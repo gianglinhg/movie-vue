@@ -1,6 +1,6 @@
 <template>
   <button
-    class="text-sm px-8 py-2 font-semibold rounded-full border-2 border-color-main hover:text-dark hover:bg-color-main duration-500 transition-all">
+    class="px-6 py-2 text-sm font-semibold transition-all duration-500 border-2 rounded-full border-color-main hover:text-dark hover:bg-color-main">
     <font-awesome-icon :icon="icon" class="mr-0.5" /> <span class="">{{ button
       }}</span></button>
 </template>
@@ -13,6 +13,7 @@ defineProps({
   },
   icon: {
     type: Array,
+    required: false,
   }
 });
 </script>
