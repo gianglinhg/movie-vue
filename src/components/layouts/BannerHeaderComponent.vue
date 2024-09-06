@@ -8,11 +8,11 @@
         <img :src="movie.poster_url" class="block object-cover w-full h-full" :alt="movie.origin_name">
       </div>
       <div
-        class="absolute h-full max-w-6xl py-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 md:left-1/3 top-2/3">
+        class="absolute h-full max-w-5xl py-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 md:left-1/3 top-2/3">
         <Transition name="bounce">
           <div class="w-screen h-full px-10 py-64 leading-5 md:w-full" v-if="show">
             <h4 class="text-sm text-color-main md:text-base xl:text-xl">{{ movie.origin_name }}</h4>
-            <h1 class="text-4xl font-semibold md:text-6xl xl:text-8xl">{{ movie.name }}</h1>
+            <h1 class="text-4xl font-semibold md:text-6xl 2xl:text-7xl">{{ movie.name }}</h1>
             <div
               class="flex flex-col w-full mt-2 space-x-0 text-sm md:items-center md:text-base xl:text-xl md:space-x-5 md:flex-row">
               <div class="flex space-x-2">
@@ -22,7 +22,7 @@
               </div>
               <div class="flex-1">
                 <p class="mr-2">{{ movie.categories_name }}</p>
-                <div class="flex flex-row w-full gap-x-2">
+                <div class="flex w-full gap-x-2">
                   <icon-info-component :icon="['far', 'calendar-days']" :info="movie.publish_year" />
                   <icon-info-component :icon="['far', 'clock']" :info="movie.episode_time" />
                 </div>
