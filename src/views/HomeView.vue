@@ -1,5 +1,6 @@
 <template>
   <BannerHeader />
+  
 </template>
 
 <script setup>

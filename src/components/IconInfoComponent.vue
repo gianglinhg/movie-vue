@@ -1,5 +1,8 @@
 <template>
-  <p class="text-sm"><span><font-awesome-icon :icon="icon" class="text-color-main" /></span> {{ info }}</p>
+  <h5 class="inline-block space-x-1">
+    <font-awesome-icon :icon="icon" class="text-color-main" />
+    <span>{{ info }}</span>
+  </h5>
 </template>
 <script setup>
 import { defineProps } from 'vue';

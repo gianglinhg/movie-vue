@@ -1,35 +1,40 @@
 <template>
-  <swiper :modules="modules" @slideChange="onSlideChange" :speed="2000" :effect="'fade'" :pagination="{
-    clickable: true,
-  }" class="w-full h-full">
-    <HeaderComponent @open="openDrawer" />
+  <swiper :modules="modules" @slideChange="onSlideChange" :speed="2000" :effect="'fade'"
+    :autoplay="{ delay: 5000, disableOnInteraction: false }" :pagination="{ clickable: true, }" @swiper="onSwiper"
+    class="w-full h-full">
+    <header-component @open="openDrawer" />
     <swiper-slide v-for="movie in banners" :key="movie.id">
       <div class="relative w-full h-full">
         <img :src="movie.poster_url" class="block object-cover w-full h-full" :alt="movie.origin_name">
       </div>
       <div
-        class="absolute h-full max-w-6xl px-48 py-5 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 lg:top-2/3 lg:left-1/3">
-        <div class="w-screen h-full px-5 py-64 leading-5 md:w-full">
-          <h4 class="text-color-main">{{ movie.origin_name }}</h4>
-          <h1 class="text-4xl font-semibold md:text-6xl lg:text-8xl">{{ movie.name }}</h1>
-          <div class="flex flex-col items-start mt-2 space-x-0 text-sm md:space-x-5 md:items-center md:flex-row">
-            <div class="space-x-2">
-              <button class="py-0.5 px-1 bg-white border border-white text-dark font-bold">PG 18</button>
-              <button class="py-0.5 px-1 font-bold border border-white">HD</button>
-            </div>
-            <div class="flex">
-              <p class="mr-2">Romance, Drama</p>
-              <div class="flex flex-row w-32 gap-x-2">
-                <IconInfoComponent :icon="['far', 'calendar-days']" info="2021" />
-                <IconInfoComponent :icon="['far', 'clock']" info="128 min" />
+        class="absolute h-full max-w-6xl py-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 md:left-1/3 top-2/3">
+        <Transition name="bounce">
+          <div class="w-screen h-full px-10 py-64 leading-5 md:w-full" v-if="show">
+            <h4 class="text-sm text-color-main md:text-base xl:text-xl">{{ movie.origin_name }}</h4>
+            <h1 class="text-4xl font-semibold md:text-6xl xl:text-8xl">{{ movie.name }}</h1>
+            <div
+              class="flex flex-col w-full mt-2 space-x-0 text-sm md:items-center md:text-base xl:text-xl md:space-x-5 md:flex-row">
+              <div class="flex space-x-2">
+                <button class="py-0.5 px-1 bg-white border border-white text-dark font-bold">{{ movie.language
+                  }}</button>
+                <button class="py-0.5 px-1 font-bold border border-white">{{ movie.quality }}</button>
+              </div>
+              <div class="flex-1">
+                <p class="mr-2">{{ movie.categories_name }}</p>
+                <div class="flex flex-row w-full gap-x-2">
+                  <icon-info-component :icon="['far', 'calendar-days']" :info="movie.publish_year" />
+                  <icon-info-component :icon="['far', 'clock']" :info="movie.episode_time" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="mt-10">
-            <ButtonComponent :button="'Watch'" :icon="['fas', 'play']" class="text-lg" />
+            <div class="mt-5">
+              <button-component :button="'Watch'" :icon="['fas', 'play']" class="text-lg" />
+            </div>
           </div>
-        </div>
+        </Transition>
+
       </div>
     </swiper-slide>
   </swiper>
@@ -41,7 +46,7 @@
 <script setup>
 import { ref, inject } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { EffectFade, Pagination } from 'swiper/modules';
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 
 import Drawer from "../DrawerComponent.vue";
 import HeaderComponent from './HeaderComponent.vue';
@@ -54,13 +59,21 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 const isDrawerOpen = ref(false);
+const show = ref(false);
+const modules = ref([EffectFade, Pagination, Autoplay]);
+const banners = inject('banners');
 
-const onSlideChange = () => console.log('slide change');
+const onSlideChange = () => {
+  show.value = false;
+  setTimeout(() => {
+    show.value = true;
+  }, 1000);
+};
+
 const openDrawer = () => isDrawerOpen.value = true;
 const closeDrawer = () => isDrawerOpen.value = false;
+const onSwiper = () => onSlideChange();
 
-const modules = ref([EffectFade, Pagination]);
-const banners = inject('banners');
 </script>
 
 <style>
@@ -72,5 +85,22 @@ html,
 body {
   position: relative;
   height: 100%;
+}
+
+.bounce-enter-active,
+.bounce-leave-active {
+  transition: transform 2s;
+}
+
+.bounce-enter-from,
+.bounce-leave-to {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.bounce-enter-to,
+.bounce-leave-from {
+  transform: translateX(0);
+  opacity: 1;
 }
 </style>

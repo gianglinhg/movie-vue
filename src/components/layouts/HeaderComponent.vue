@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed top-0 left-0 flex justify-between items-center w-screen px-4 md:px-8 lg:px-16 py-5 z-[99999] transition duration-300 ease-in-out">
+    class="fixed top-0 left-0 flex justify-between items-center w-screen px-4 md:px-16 xl:px-48 py-5 z-[99999] transition duration-300 ease-in-out">
     <div class="w-40 cursor-pointer">
       <img src="/images/logo.png" class="object-cover w-full h-full" alt="logo">
     </div>
