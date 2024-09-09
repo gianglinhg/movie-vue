@@ -1,8 +1,7 @@
 <template>
-  <BannerHeader />
-
+  <BannerComponent />
 </template>
 
 <script setup>
-import BannerHeader from '@/components/layouts/BannerHeaderComponent.vue';
+import BannerComponent from '@/components/layouts/BannerComponent.vue';
 </script>

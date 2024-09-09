@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed top-0 left-0 flex justify-between items-center w-screen px-4 md:px-16 xl:px-48 py-5 z-[99999] transition duration-300 ease-in-out">
+    class="fixed top-0 left-0 flex justify-between items-center w-screen px-4 md:px-16 xl:px-48 py-5 z-[10] transition duration-300 ease-in-out">
     <div class="w-40 cursor-pointer">
       <img src="/images/logo.png" class="object-cover w-full h-full" alt="logo">
     </div>
@@ -34,16 +34,17 @@
       </div>
     </div>
   </nav>
+  <Drawer :is-open="isDrawerOpen" :speed="500" :maxWidth="'300px'" @close="closeDrawer">
+    <MenuComponent @close="closeDrawer" />
+  </Drawer>
 </template>
 <script setup>
+import { ref } from 'vue';
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import MenuComponent from '@/components/MenuComponent.vue';
-const emit = defineEmits(['open', 'close'])
+import Drawer from "@/components/DrawerComponent.vue";
 
-const openDrawer = () => {
-  emit('open')
-};
-const closeDrawer = () => {
-  emit('close')
-};
+const isDrawerOpen = ref(false);
+const openDrawer = () => isDrawerOpen.value = true;
+const closeDrawer = () => isDrawerOpen.value = false;
 </script>

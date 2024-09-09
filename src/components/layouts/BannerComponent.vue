@@ -2,7 +2,6 @@
   <swiper :modules="modules" @slideChange="onSlideChange" :speed="2000" :effect="'fade'"
     :autoplay="{ delay: 5000, disableOnInteraction: false }" :pagination="{ clickable: true, }" @swiper="onSwiper"
     class="w-full h-full">
-    <header-component @open="openDrawer" />
     <swiper-slide v-for="movie in banners" :key="movie.id">
       <div class="relative w-full h-full">
         <img :src="movie.poster_url" class="block object-cover w-full h-full" :alt="movie.origin_name">
@@ -38,9 +37,6 @@
       </div>
     </swiper-slide>
   </swiper>
-  <Drawer :is-open="isDrawerOpen" :speed="500" :maxWidth="'350px'" @close="closeDrawer">
-    <MenuComponent @close="closeDrawer" />
-  </Drawer>
 </template>
 
 <script setup>
@@ -48,17 +44,13 @@ import { ref, inject } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 
-import Drawer from "../DrawerComponent.vue";
-import HeaderComponent from './HeaderComponent.vue';
 import ButtonComponent from '../ButtonComponent.vue';
 import IconInfoComponent from '../IconInfoComponent.vue';
-import MenuComponent from '../MenuComponent.vue';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-const isDrawerOpen = ref(false);
 const show = ref(false);
 const modules = ref([EffectFade, Pagination, Autoplay]);
 const banners = inject('banners');
@@ -70,8 +62,6 @@ const onSlideChange = () => {
   }, 1000);
 };
 
-const openDrawer = () => isDrawerOpen.value = true;
-const closeDrawer = () => isDrawerOpen.value = false;
 const onSwiper = () => onSlideChange();
 
 </script>
