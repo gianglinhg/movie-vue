@@ -15,7 +15,7 @@
               <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
             </a>
           </li>
-          <li class="flex items-center gap-x-1">
+          <li class="flex items-center gap-x-1" v-if="n18">
             <div><font-awesome-icon :icon="['fas', 'globe']" class="text-color-main" /></div>
             <select id="lang-dropdown" class="cursor-pointer text-dark">
               <option value="vi">Vi</option>
@@ -39,12 +39,20 @@
   </Drawer>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { watch, ref } from 'vue';
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import MenuComponent from '@/components/MenuComponent.vue';
 import Drawer from "@/components/DrawerComponent.vue";
+import { useDevice } from '@/stores/device';
 
+const { openMenu } = useDevice();
 const isDrawerOpen = ref(false);
+const n18 = ref(false);
+
+watch(() => openMenu.value, (newVal) => {
+  if (!newVal) closeDrawer();
+});
+
 const openDrawer = () => isDrawerOpen.value = true;
 const closeDrawer = () => isDrawerOpen.value = false;
 </script>

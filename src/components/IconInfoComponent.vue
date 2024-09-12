@@ -1,5 +1,5 @@
 <template>
-  <h5 class="inline-block space-x-1">
+  <h5 class="inline-block space-x-2">
     <font-awesome-icon :icon="icon" class="text-color-main" />
     <span>{{ info }}</span>
   </h5>
@@ -14,6 +14,7 @@ defineProps({
   info: {
     type: String,
     required: true,
+    default: null,
   },
 });
 </script>

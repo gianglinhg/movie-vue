@@ -22,7 +22,7 @@
               <div class="flex-1">
                 <p class="mr-2">{{ movie.categories_name }}</p>
                 <div class="flex w-full gap-x-2">
-                  <icon-info-component :icon="['far', 'calendar-days']" :info="movie.publish_year" />
+                  <icon-info-component :icon="['far', 'calendar-days']" :info="movie.publish_year.toString()" />
                   <icon-info-component :icon="['far', 'clock']" :info="movie.episode_time" />
                 </div>
               </div>
