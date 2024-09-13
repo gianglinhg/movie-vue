@@ -9,16 +9,16 @@
   </div>
   <ul class="flex flex-col justify-center gap-5 p-5 lg:flex-row lg:p-0">
     <li>
-      <a href="#" class="font-semibold transition-all duration-300 hover:text-color-main">Home</a>
+      <a href="#" class="font-semibold item__menu">Home</a>
     </li>
     <li>
-      <a href="#" class="font-semibold transition-all duration-300 hover:text-color-main">About</a>
+      <a href="#" class="font-semibold item__menu">About</a>
     </li>
     <li>
-      <a href="#" class="font-semibold transition-all duration-300 hover:text-color-main">Feature</a>
+      <a href="#" class="font-semibold item__menu">Feature</a>
     </li>
     <li>
-      <a href="#" class="font-semibold transition-all duration-300 hover:text-color-main">Contact</a>
+      <a href="#" class="font-semibold item__menu">Contact</a>
     </li>
   </ul>
 </template>

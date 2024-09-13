@@ -13,7 +13,7 @@ const newMovie = ref([]);
 provide('banners', newMovie);
 onMounted(async () => {
   try {
-    const res = await axios.get('http://movie-admin.local/api/phim-banner');
+    const res = await axios.get('/phim-banner');
     newMovie.value = res.data;
   } catch (err) {
     console.log('ERROR', err);

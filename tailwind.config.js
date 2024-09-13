@@ -16,6 +16,9 @@ export default {
       sans: ['Poppins', 'sans-serif'],
     },
     extend: {
+      gap: {
+        '30': '30px',
+      }
     },
   },
   plugins: [],

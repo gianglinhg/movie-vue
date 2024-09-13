@@ -1,7 +1,7 @@
 // src/axios.js
 import axios from 'axios';
 
-// Interceptor để tự động thêm token vào mỗi request nếu có
+axios.defaults.baseURL = 'http://movie-admin.local/api';
 axios.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('authToken');

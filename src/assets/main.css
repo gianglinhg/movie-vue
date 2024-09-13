@@ -4,4 +4,7 @@
 body {
   @apply font-sans text-white bg-dark;
 }
+.item__menu {
+  @apply uppercase transition-all duration-300 hover:text-color-main
+}
 @tailwind utilities;

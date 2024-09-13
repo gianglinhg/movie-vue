@@ -1,5 +1,5 @@
 <template>
-  <swiper :modules="modules" @slideChange="onSlideChange" :speed="2000" :effect="'fade'"
+  <swiper :modules="modules" @slideChange="onSlideChange" :speed="2000" :effect="'fade'" :loop="true"
     :autoplay="{ delay: 5000, disableOnInteraction: false }" :pagination="{ clickable: true, }" @swiper="onSwiper"
     class="w-full h-full">
     <swiper-slide v-for="movie in banners" :key="movie.id">

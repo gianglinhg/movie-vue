@@ -33,7 +33,7 @@ import ButtonComponent from '@/components/ButtonComponent.vue';
 
 async function login(email, password) {
   try {
-    const response = await axios.post('http://movie-admin.local/api/login', {
+    const response = await axios.post('/login', {
       email,
       password,
     });
